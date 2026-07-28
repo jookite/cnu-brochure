@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>충남대학교 컴퓨터인공지능학부 · 한학기 성과 모음</title>
+<meta name="description" content="2025학년도 2학기부터 2026학년도 1학기까지, 충남대학교 컴퓨터인공지능학부의 연구·수상·행사·동아리 성과를 모았습니다.">
+<link rel="canonical" href="https://jookite.github.io/cnu-brochure/">
+<meta property="og:url" content="https://jookite.github.io/cnu-brochure/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="충남대학교 컴퓨터인공지능학부">
+<meta property="og:title" content="컴퓨터인공지능학부 · 한학기 성과 모음">
+<meta property="og:description" content="2025-2학기 ~ 2026-1학기 연구·수상·행사·동아리 성과">
+<meta property="og:image" content="https://jookite.github.io/cnu-brochure/cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="pages/01.jpg?v=1">
+<style>
+:root{
+  --ink:#0C121C; --rule:#243147; --cnu:#1B4FA0; --cnu-lit:#4886E0;
+  --muted:#7C8698; --paper:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{
+  background:var(--ink);color:#E8ECF3;
+  font-family:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,
+    "Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
+  display:flex;flex-direction:column;-webkit-tap-highlight-color:transparent;
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;
+  background:radial-gradient(115% 75% at 50% 0,rgba(27,79,160,.2),transparent 60%)}
+
+header{flex:0 0 auto;display:flex;align-items:baseline;gap:14px;
+  padding:16px 24px 12px;border-bottom:1px solid var(--rule);position:relative;z-index:3}
+.mark{font-size:11px;letter-spacing:.22em;color:var(--cnu-lit);font-weight:700}
+h1{font-size:13px;font-weight:600;color:#C6CEDC}
+h1 span{color:var(--muted);font-weight:400}
+.range{margin-left:auto;font-size:11px;color:var(--muted);letter-spacing:.05em;
+  font-variant-numeric:tabular-nums}
+
+main{flex:1 1 auto;position:relative;min-height:0;display:flex;
+  align-items:center;justify-content:center;padding:20px 0 10px;z-index:2}
+
+/* stage is sized in JS — never overflows */
+.stage{position:relative;flex:0 0 auto}
+.stack{position:absolute;inset:0;pointer-events:none}
+.stack i{position:absolute;top:5px;bottom:5px;right:0;width:9px;
+  background:linear-gradient(90deg,#DFE4EB,#AFB9C8);border-radius:0 3px 3px 0;
+  transition:opacity .2s,transform .2s}
+.book{position:absolute;inset:0;background:var(--paper);border-radius:2px;
+  overflow:hidden;box-shadow:0 26px 60px rgba(0,0,0,.55)}
+.layer{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  display:block;background:var(--paper)}
+.book::after{content:"";position:absolute;inset:0 auto 0 0;width:22px;z-index:3;
+  pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.13),transparent)}
+.over{z-index:2}
+@keyframes slideOut{to{transform:translateX(-6%) scale(.986);opacity:0}}
+@keyframes slideIn{from{transform:translateX(-6%) scale(.986);opacity:0}}
+.over.out{animation:slideOut .22s cubic-bezier(.4,0,.2,1) forwards}
+.over.in{animation:slideIn .22s cubic-bezier(.4,0,.2,1) forwards}
+@media (prefers-reduced-motion:reduce){.over.out,.over.in{animation-duration:.01s}}
+
+.zone{position:absolute;top:0;bottom:0;width:50%;z-index:4;cursor:pointer}
+.zone.l{left:0} .zone.r{right:0}
+
+.nav{position:absolute;top:50%;translate:0 -50%;z-index:5;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--rule);background:rgba(12,18,28,.7);
+  color:#C6CEDC;cursor:pointer;display:grid;place-items:center;
+  transition:border-color .16s,color .16s,background .16s;backdrop-filter:blur(6px)}
+.nav:hover:not(:disabled){border-color:var(--cnu-lit);color:#fff;background:rgba(27,79,160,.3)}
+.nav:disabled{opacity:.24;cursor:default}
+.nav:focus-visible{outline:2px solid var(--cnu-lit);outline-offset:3px}
+.nav.prev{left:14px} .nav.next{right:14px}
+.nav svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
+
+footer{flex:0 0 auto;border-top:1px solid var(--rule);padding:9px 16px 12px;
+  display:flex;flex-direction:column;gap:8px;position:relative;z-index:3}
+.strip{display:flex;gap:7px;overflow-x:auto;padding:2px 4px;justify-content:center;
+  scrollbar-width:thin;scroll-behavior:smooth}
+.strip::-webkit-scrollbar{height:5px}
+.strip::-webkit-scrollbar-thumb{background:var(--rule);border-radius:3px}
+.strip button{flex:0 0 auto;padding:0;border:1px solid transparent;background:none;
+  cursor:pointer;border-radius:2px;line-height:0;opacity:.4;
+  transition:opacity .15s,border-color .15s}
+.strip button img{width:40px;display:block}
+.strip button:hover{opacity:.82}
+.strip button[aria-current="true"]{opacity:1;border-color:var(--cnu-lit)}
+.strip button:focus-visible{outline:2px solid var(--cnu-lit);outline-offset:2px}
+
+.bar{display:flex;align-items:center;gap:14px;font-size:11px;color:var(--muted)}
+.counter{font-variant-numeric:tabular-nums;letter-spacing:.07em;color:#C6CEDC}
+.counter b{color:var(--cnu-lit);font-weight:700}
+.label{letter-spacing:.1em;font-size:10px;text-transform:uppercase}
+.tools{margin-left:auto;display:flex;gap:7px}
+.tools button{border:1px solid var(--rule);background:none;color:var(--muted);
+  font:inherit;font-size:11px;padding:5px 10px;border-radius:2px;cursor:pointer;
+  transition:border-color .15s,color .15s}
+.tools button:hover{border-color:var(--cnu-lit);color:#E8ECF3}
+.tools button[aria-pressed="true"]{border-color:var(--cnu-lit);color:#E8ECF3}
+.tools button:focus-visible{outline:2px solid var(--cnu-lit);outline-offset:2px}
+
+@media (max-width:760px){
+  header{padding:12px 14px 9px;flex-wrap:wrap;gap:7px}
+  .range{width:100%;margin:0}
+  .nav{display:none}
+  .strip{justify-content:flex-start}
+  .tools .hide-sm{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="mark">CNU</span>
+  <h1>컴퓨터인공지능학부 <span>· 한학기 성과 모음</span></h1>
+  <span class="range">2025학년도 2학기 — 2026학년도 1학기</span>
+</header>
+
+<main id="main">
+  <button class="nav prev" id="prev" aria-label="이전 페이지">
+    <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+
+  <div class="stage" id="stage">
+    <div class="stack" id="stack"></div>
+    <div class="book">
+      <img class="layer under" id="under" alt="">
+      <img class="layer over"  id="over"  alt="">
+    </div>
+    <div class="zone l" id="zl"></div>
+    <div class="zone r" id="zr"></div>
+  </div>
+
+  <button class="nav next" id="next" aria-label="다음 페이지">
+    <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+</main>
+
+<footer>
+  <nav class="strip" id="strip" aria-label="페이지 목록"></nav>
+  <div class="bar">
+    <span class="counter"><b id="cur">1</b> / <span id="tot"></span></span>
+    <span class="label" id="label"></span>
+    <span class="tools">
+      <button id="anim" class="hide-sm" aria-pressed="true">넘김 효과</button>
+      <button id="link">링크 복사</button>
+      <button id="save">이 페이지 저장</button>
+      <button id="full" class="hide-sm">전체화면</button>
+    </span>
+  </div>
+</footer>
+
+<script>
+const PAGES = [{"src": "pages/01.jpg", "thumb": "thumbs/01.jpg", "label": "표지", "w": 563, "h": 794}, {"src": "pages/02.jpg", "thumb": "thumbs/02.jpg", "label": "인사말", "w": 563, "h": 794}, {"src": "pages/03.jpg", "thumb": "thumbs/03.jpg", "label": "교육목표 · 진로현황", "w": 563, "h": 794}, {"src": "pages/04.jpg", "thumb": "thumbs/04.jpg", "label": "SW중심대학", "w": 563, "h": 794}, {"src": "pages/05.jpg", "thumb": "thumbs/05.jpg", "label": "BK21 plus", "w": 563, "h": 794}, {"src": "pages/06.jpg", "thumb": "thumbs/06.jpg", "label": "정보보호 특성화대학", "w": 563, "h": 794}, {"src": "pages/07.jpg", "thumb": "thumbs/07.jpg", "label": "COSS", "w": 563, "h": 794}, {"src": "pages/08.jpg", "thumb": "thumbs/08.jpg", "label": "학교 행사", "w": 563, "h": 794}, {"src": "pages/09.jpg", "thumb": "thumbs/09.jpg", "label": "학교 행사 · 명랑 운동회", "w": 563, "h": 794}, {"src": "pages/10.jpg", "thumb": "thumbs/10.jpg", "label": "RESEARCH", "w": 1172, "h": 1653}, {"src": "pages/11.jpg", "thumb": "thumbs/11.jpg", "label": "RESEARCH · AWARDS", "w": 1172, "h": 1653}, {"src": "pages/12.jpg", "thumb": "thumbs/12.jpg", "label": "AWARDS · NEWS", "w": 1172, "h": 1653}, {"src": "pages/13.jpg", "thumb": "thumbs/13.jpg", "label": "동아리 성과", "w": 563, "h": 794}, {"src": "pages/14.jpg", "thumb": "thumbs/14.jpg", "label": "동아리 · ANA · SPG", "w": 563, "h": 794}, {"src": "pages/15.jpg", "thumb": "thumbs/15.jpg", "label": "동아리 · ARGOS", "w": 563, "h": 794}, {"src": "pages/16.jpg", "thumb": "thumbs/16.jpg", "label": "마무리", "w": 563, "h": 794}];
+const $=id=>document.getElementById(id);
+const stage=$('stage'), main=$('main'), over=$('over'), under=$('under'), strip=$('strip'), stack=$('stack');
+const V='1'; PAGES.forEach(p=>{p.src+='?v='+V; p.thumb+='?v='+V;});
+const RATIO = PAGES[0].w / PAGES[0].h;
+let i=0, busy=false, useAnim=true;
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+$('tot').textContent = PAGES.length;
+
+/* ── size the stage from the box that actually exists ── */
+function fit(){
+  const r = main.getBoundingClientRect();
+  const side = r.width > 760 ? 128 : 24;
+  let h = r.height, w = h * RATIO;
+  const maxW = r.width - side;
+  if (w > maxW){ w = maxW; h = w / RATIO; }
+  stage.style.width  = Math.floor(w) + 'px';
+  stage.style.height = Math.floor(h) + 'px';
+}
+new ResizeObserver(fit).observe(main);
+addEventListener('orientationchange', () => setTimeout(fit, 120));
+
+/* ── paper edges: thinner as you advance ── */
+for (let k=0;k<4;k++) stack.appendChild(document.createElement('i'));
+function drawStack(){
+  const left = PAGES.length - 1 - i;
+  [...stack.children].forEach((e,k)=>{
+    const on = k < Math.min(4,left);
+    e.style.opacity = on ? (0.46 - k*0.085).toFixed(2) : 0;
+    e.style.transform = `translateX(${on ? (k+1)*4 : 0}px) scaleY(${1-(k+1)*0.011})`;
+  });
+}
+
+PAGES.forEach((p,k)=>{
+  const b=document.createElement('button');
+  b.innerHTML=`<img src="${p.thumb}" alt="">`;
+  b.title=`${k+1}. ${p.label}`;
+  b.setAttribute('aria-label',`${k+1}페이지 ${p.label}`);
+  b.onclick=()=>go(k);
+  strip.appendChild(b);
+});
+
+function sync(){
+  $('cur').textContent=i+1;
+  $('label').textContent=PAGES[i].label;
+  $('prev').disabled=i===0;
+  $('next').disabled=i===PAGES.length-1;
+  [...strip.children].forEach((b,k)=>b.setAttribute('aria-current',k===i));
+  strip.children[i].scrollIntoView({block:'nearest',inline:'center'});
+  document.title=`${i+1}. ${PAGES[i].label} · 컴퓨터인공지능학부 한학기 성과 모음`;
+  history.replaceState(null,'',`#p${i+1}`);
+  drawStack(); warm();
+}
+
+function go(n){
+  n=Math.max(0,Math.min(PAGES.length-1,n));
+  if(n===i||busy) return;
+  const dir = n>i ? 1 : -1;
+
+  if(!useAnim || reduced){
+    i=n; under.src=over.src=PAGES[i].src; over.alt=PAGES[i].label; sync(); return;
+  }
+  busy=true;
+  if(dir>0){                       // 다음 장: 현재 장이 걷히며 다음 장이 드러남
+    under.src=PAGES[n].src;
+    over.className='layer over out';
+  }else{                           // 이전 장: 이전 장이 위로 덮임
+    under.src=PAGES[i].src;
+    over.src=PAGES[n].src;
+    over.className='layer over in';
+  }
+  setTimeout(()=>{
+    i=n;
+    over.className='layer over';
+    over.src=PAGES[i].src; under.src=PAGES[i].src;
+    over.alt=`${i+1}페이지 ${PAGES[i].label}`;
+    sync(); busy=false;
+  },230);
+}
+const nextP=()=>go(i+1), prevP=()=>go(i-1);
+
+$('next').onclick=nextP; $('prev').onclick=prevP;
+$('zr').onclick=nextP;   $('zl').onclick=prevP;
+
+addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='PageDown'){nextP();e.preventDefault();}
+  if(e.key==='ArrowLeft' ||e.key==='PageUp'  ){prevP();e.preventDefault();}
+  if(e.key==='Home')go(0);
+  if(e.key==='End')go(PAGES.length-1);
+});
+
+let x0=null,y0=null;
+addEventListener('touchstart',e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
+addEventListener('touchend',e=>{
+  if(x0===null)return;
+  const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+  if(Math.abs(dx)>46&&Math.abs(dx)>Math.abs(dy)) dx<0?nextP():prevP();
+  x0=null;
+},{passive:true});
+
+$('anim').onclick=e=>{useAnim=!useAnim;e.currentTarget.setAttribute('aria-pressed',useAnim)};
+$('link').onclick=async e=>{
+  try{ await navigator.clipboard.writeText(location.href);
+       const b=e.currentTarget, t=b.textContent; b.textContent='복사됨';
+       setTimeout(()=>b.textContent=t,1400);
+  }catch{ prompt('링크를 복사하세요', location.href); }
+};
+$('save').onclick=()=>{
+  const a=document.createElement('a');
+  a.href=PAGES[i].src; a.download=`브로셔_${String(i+1).padStart(2,'0')}.jpg`; a.click();
+};
+$('full').onclick=()=>document.fullscreenElement
+  ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+document.addEventListener('fullscreenchange',()=>{
+  $('full').textContent=document.fullscreenElement?'전체화면 해제':'전체화면';
+  setTimeout(fit,120);
+});
+
+function warm(){[i-1,i+1,i+2].forEach(k=>{
+  if(k>=0&&k<PAGES.length&&!PAGES[k]._w){PAGES[k]._w=1;const im=new Image();im.src=PAGES[k].src;}
+});}
+const hash=parseInt((location.hash.match(/p(\d+)/)||[])[1]);
+if(hash>=1&&hash<=PAGES.length) i=hash-1;
+under.src=over.src=PAGES[i].src;
+over.alt=`${i+1}페이지 ${PAGES[i].label}`;
+addEventListener('hashchange',()=>{
+  const h=parseInt((location.hash.match(/p(\d+)/)||[])[1]);
+  if(h>=1&&h<=PAGES.length&&h-1!==i) go(h-1);
+});
+fit(); sync();
+</script>
+</body>
+</html>
